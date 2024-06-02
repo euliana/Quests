@@ -1,0 +1,156 @@
+﻿<Window x:Class="Quests.Windows.QuestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Quests.Windows"
+        mc:Ignorable="d"        
+        Width="400"
+        Height="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="#424242"/>
+        </Style>
+        <Style x:Key="MaterialTextBox" TargetType="TextBox"
+                BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+            <Setter Property="FontFamily" Value="Kreadon"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="#C5BD99"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="CaretBrush" Value="White"/>
+            <Setter Property="Margin" Value="70, 0, 70, 40"/>
+            <Setter Property="SelectionBrush" Value="#FF701112"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Bottom"/>
+            <Setter Property="materialDesign:TextFieldAssist.UnderlineBrush" Value="White"/>
+            <Setter Property="materialDesign:HintAssist.FloatingScale" Value="0.4"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Wheat"/>
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="MaterialComboBoxChoice" TargetType="ComboBox"
+                BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}">
+            <Setter Property="FontFamily" Value="Kreadon"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="Wheat"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="materialDesign:HintAssist.FloatingScale" Value="0.4"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
+        </Style>
+        <Style x:Key="MaterialComboBoxItem" TargetType="ComboBoxItem">
+            <Setter Property="FontFamily" Value="Kreadon"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="#FFFFD200"/>
+            <Setter Property="Background" Value="Black"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Номер телефона: "
+                       Grid.Column="0"/>
+            <TextBlock x:Name="tbPhone"
+                       Grid.Column="1"
+                       FontWeight="Heavy"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Название квеста: "
+                       Grid.Column="0"/>
+            <TextBlock Grid.Column="1" 
+                       Text="{Binding Name}"
+                       x:Name="tbNameAuth"
+                       FontWeight="Heavy"/>
+        </Grid>
+        
+        <TextBox x:Name="txtCountPlayers" 
+                 Grid.Row="3"
+                 Style="{StaticResource MaterialTextBox}"
+                 materialDesign:HintAssist.Hint="Введите количество игроков"/>
+
+        <DatePicker x:Name="dpBookingDate"
+                    Grid.Row="4"
+                    Style="{DynamicResource MaterialDatePicker}"
+                    materialDesign:HintAssist.Hint="Выберите дату">
+            <DatePicker.Resources>
+                <Style x:Key="MaterialCalendarDayButton" 
+                        TargetType="CalendarDayButton"
+                        BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
+                <Setter Property="materialDesign:CalendarAssist.SelectionColor" Value="#701112" />
+                <Setter Property="materialDesign:CalendarAssist.SelectionForegroundColor" Value="White" />
+                </Style>
+                <Style x:Key="MaterialCalendarButton" TargetType="CalendarButton"
+                        BasedOn="{StaticResource MaterialDesignCalendarButton}">
+                    <Setter Property="materialDesign:CalendarAssist.SelectionColor" Value="#701112" />
+                    <Setter Property="materialDesign:CalendarAssist.SelectionForegroundColor" Value="White" />
+                </Style>
+                <Style x:Key="MaterialCalendar" TargetType="{x:Type Calendar}"
+                        BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}">
+                    <Setter Property="Background" Value="#343C3F" />
+                    <Setter Property="CalendarButtonStyle" Value="{StaticResource MaterialCalendarButton}" />
+                    <Setter Property="CalendarDayButtonStyle" Value="{StaticResource MaterialCalendarDayButton}" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter  Property="materialDesign:CalendarAssist.HeaderBackground" Value="#701112" />
+                    <Setter Property="materialDesign:CalendarAssist.HeaderForeground" Value="#FFFFC65E" />
+                </Style>
+                <Style x:Key="MaterialDatePicker" TargetType="DatePicker"
+                    BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                <Setter Property="CalendarStyle" Value="{StaticResource MaterialCalendar}" />
+                <Setter Property="Margin" Value="70, 0, 70, 40" />
+                <Setter Property="Foreground" Value="#C5BD99" />
+                <Setter Property="FontFamily" Value="Kreadon" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="FontSize" Value="18" />
+            </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+
+        <ComboBox x:Name="cmbTime"
+                  Grid.Row="2"
+                  Style="{StaticResource MaterialComboBoxChoice}"
+                  SelectedItem="0"
+                  materialDesign:HintAssist.Hint="Выберите время бронирования"
+                  Margin="0 0 0 15">
+        </ComboBox>
+            
+        <Button Content="Забронировать" Click="Button_Click" 
+                Grid.Row="5" 
+                Background="#C5BD99"/>
+
+        <Button x:Name="btnBack" 
+                Grid.Row="6"
+                Content="Закрыть"
+                Background="#701112"
+                BorderBrush="#701112"
+                Foreground="Wheat" Click="btnBack_Click"/>
+    </Grid>
+</Window>

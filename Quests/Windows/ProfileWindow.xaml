@@ -1,0 +1,77 @@
+﻿<Window x:Class="Quests.Windows.ProfileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Quests.Windows"
+        mc:Ignorable="d"
+        Title="ProfileWindow"
+        Height="250" Width="450" 
+        Background="#343C3F"
+        WindowStartupLocation="CenterOwner">
+
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="Wheat"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="Wheat"/>
+            <Setter Property="Background" Value="#701112"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="49"/>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="53"/>
+            <RowDefinition Height="51"/>
+            <RowDefinition Height="633"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Имя: "
+               Grid.Row="0"
+               HorizontalAlignment="Right"
+               Grid.Column="0"/>
+        <Label Content="Дракула"
+               x:Name="UserName"
+               Grid.Row="0"
+               Grid.Column="1"/>
+        <Label Content="Фамилия: "
+               Grid.Row="1"
+               HorizontalAlignment="Right"
+               Grid.Column="0"/>
+        <Label Content="Дракула"
+               x:Name="UserFamily"
+               Grid.Row="1"
+               Grid.Column="1"/>
+        <Label Content="Телефон: "
+               Grid.Row="2"
+               HorizontalAlignment="Right"
+               Grid.Column="0"/>
+        <Label Content="+79877545731"
+               x:Name="UserPhone"
+               Grid.Row="2"
+               Grid.Column="1"/>
+        <Label Content="Пол: "
+               Grid.Row="3"
+               HorizontalAlignment="Right"
+               Grid.Column="0"/>
+        <Label Content="Весёлый"
+               x:Name="UserSex"
+               Grid.Row="3"
+               Grid.Column="1"/>
+        <Button x:Name="BackButton"
+                Grid.Column="2"
+                Grid.Row="3"
+                Content="Назад"
+                Margin="10, 10, 10, 10"
+                Click="BackButton_Click"/>
+    </Grid>
+</Window>

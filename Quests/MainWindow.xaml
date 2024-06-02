@@ -1,0 +1,235 @@
+﻿<Window x:Class="Quests.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:custom="clr-namespace:HamburgerMenuControl2;assembly=HamburgerMenuControl2"
+        xmlns:local="clr-namespace:Quests"
+        mc:Ignorable="d"
+        Height="850" Width="1350" 
+        Background="#343C3F"
+        Name="MainQuestWindow"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style x:Key="MaterialToggleButton" TargetType="ToggleButton"
+               BasedOn="{StaticResource MaterialDesignHamburgerToggleButton}">
+            <Setter Property="Foreground" Value="#FFD4373B"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+        <Style x:Key="MaterialLabel" TargetType="Label">
+            <Setter Property="Foreground" Value="Wheat"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style x:Key="MaterialButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#FFE80808"/>
+            <Setter Property="BorderBrush" Value="#FF770303"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0, 0, 0, 10"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style x:Key="MaterialReserveButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#FFFF8000"/>
+            <Setter Property="BorderBrush" Value="#FFFF8000"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10, 30, 10, 0"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style x:Key="MaterialListBoxItem" TargetType="ListBoxItem"
+               BasedOn="{StaticResource MaterialDesignListBoxItem}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="{DynamicResource ThirdColorBackGroundBrush}"/>
+                    <Setter Property="BorderThickness" Value="2, 0, 0, 0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="BorderMain" TargetType="Border"
+               BasedOn="{StaticResource MaterialDesignToolBarMainPanelBorderStyle}">
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Background" Value="#FF052906"/>
+            <Setter Property="Margin" Value="0"/>
+        </Style>
+        <Style x:Key="MaterialTextBlock" TargetType="TextBlock"
+                BasedOn="{StaticResource MaterialDesignBodyMediumTextBlock}">
+            <Setter Property="Foreground" Value="Wheat"/>
+            <Setter Property="FontFamily" Value="Kreadon"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+        <Style x:Key="MaterialLabelMenuItem" TargetType="Label"
+                BasedOn="{StaticResource MaterialDesignLabel}">
+            <Setter Property="Margin" Value="20, 0, 0, 0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Kreadon"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style x:Key="MaterialHamburgerMenu" TargetType="custom:HamburgerMenu">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColorBrush}"/>
+            <Setter Property="Background" Value="#112E15"/>
+            <Setter Property="BorderBrush" Value="Wheat"/>
+            <Setter Property="BorderThickness" Value="0, 0, 1, 0"/>
+            <Setter Property="FontFamily" Value="Kreadon"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="custom:HamburgerMenuItem">
+            <Setter Property="Padding" Value="20 10" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Background" Value="{DynamicResource TransponentColorBrush}" />
+            <Setter Property="Foreground" Value="#444" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#FFD4373B"/>
+                    <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Wheat"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0, 10, 20, 10"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="Wheat"/>
+            <Setter Property="Background" Value="#701112"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10, 0, 10, 0"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Style="{StaticResource BorderMain}">
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="660" />
+                    <ColumnDefinition Width="400*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="0"
+                            Grid.Column="2">
+                    <Button x:Name="AuthButton"
+                            Content="Авторизоваться"
+                            Style="{StaticResource MaterialButton}"
+                            Grid.Row="0"
+                            Margin="0, 0, 40, 20"
+                            Click="btnLogin_Click"
+                            Grid.Column="2"/>
+                    <Button x:Name="RegButton"
+                            Content="Зарегистрироваться"
+                            Style="{StaticResource MaterialButton}"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Click="btnSignIn_Click"/>
+                </StackPanel>
+                <Label Content="Гость"
+                       x:Name="UserNameLabel"
+                       Grid.Row="0"
+                       Grid.Column="2"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Bottom"
+                       Style="{StaticResource MaterialLabel}"/>
+
+                <ToggleButton x:Name="CheckBoxToggleMenu"
+                              Style="{StaticResource MaterialToggleButton}"
+                              Grid.Column="0"/>
+                <TextBlock Grid.Column="1"
+                           Style="{StaticResource MaterialTextBlock}"
+                           Text="Квесты Сюрприз" />
+
+                <Frame x:Name="SwitcherToogleButton"
+                       Grid.Column="2"
+                       HorizontalAlignment="Right"
+                       />
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <custom:HamburgerMenu  Grid.Column="0"
+                                   Style="{StaticResource MaterialHamburgerMenu}"
+                                   FallbackOpenWidth="300"
+                                   IsOpen="{Binding IsChecked, ElementName=CheckBoxToggleMenu}"
+                                   OpenCloseDuration="0:0:0.25">
+                <custom:HamburgerMenu.Content>
+                    <StackPanel Margin="0 10">
+                        <custom:HamburgerMenuItem>
+                            <Label Content="Добавить квест" 
+                                   x:Name="AddQuestLabelMenuItem"
+                                   Style="{StaticResource MaterialLabelMenuItem}"
+                                   MouseLeftButtonDown="AddQuestLabelMenuItem_MouseLeftButtonDown"/>
+                        </custom:HamburgerMenuItem>
+                        <custom:HamburgerMenuItem>
+                            <Label Content="Удалить квест"
+                                   x:Name="DeleteQuestLabelMenuItem"
+                                   Style="{StaticResource MaterialLabelMenuItem}"
+                                   MouseLeftButtonDown="DeleteQuestLabelMenuItem_MouseLeftButtonDown"/>
+                        </custom:HamburgerMenuItem>
+                        <custom:HamburgerMenuItem>
+                            <Label Content="Профиль"
+                                   x:Name="ProfilePageLabelMenuItem"
+                                   Style="{StaticResource MaterialLabelMenuItem}"
+                                   MouseLeftButtonDown="ProfilePageLabelMenuItem_MouseLeftButtonDown"/>
+                        </custom:HamburgerMenuItem>
+                        <custom:HamburgerMenuItem>
+                            <Label Content="Выход" 
+                                   x:Name="ExitLabelMenuItem"
+                                   Style="{StaticResource MaterialLabelMenuItem}"
+                                   MouseLeftButtonDown="ExitLabelMenuItem_MouseLeftButtonDown"/>
+                        </custom:HamburgerMenuItem>
+                    </StackPanel>
+                </custom:HamburgerMenu.Content>
+            </custom:HamburgerMenu>
+
+            <Grid Grid.Column="1"
+                  Margin="50, 0, 0, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Наш сервис предназначен для смелых, кто готов посетить квесты, которые входят в топ лучших, но вы ничего не будете знать о них, кроме названия в оригинале и адреса проведения, остальное окажется сюрпризом... Осмелитесь?"
+                           Grid.Row="0"
+                           TextWrapping="WrapWithOverflow"/>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0, 0, 0, 30"
+                            Grid.Row="1">
+                    <Button x:Name="SortByCostUp"
+                            Click="SortByCostUp_Click"
+                            Content="Сортировать по возрастанию цены"/>
+                    <Button x:Name="SortByCostDown"
+                            Click="SortByCostDown_Click"
+                            Content="Сортировать по возрастанию цены"/>
+                    <Button x:Name="SortByCountPeopleUp"
+                            Click="SortByCountPeopleUp_Click"
+                            Content="Сортировать по возрастанию людей"/>
+                    <Button x:Name="SortByCountPeopleDown"
+                            Click="SortByCountPeopleDown_Click"
+                            Content="Сортировать по убыванию людей"/>
+                </StackPanel>
+                <ScrollViewer VerticalScrollBarVisibility="Visible"
+                              Grid.Row="2">
+                    <WrapPanel x:Name="QuestsPanel"
+                               HorizontalAlignment="Center"
+                               ScrollViewer.CanContentScroll="True"/>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
